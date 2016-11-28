@@ -1,36 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class App extends React.Component {
-
-   constructor(props) {
-      super(props);
-		
-      this.state = {
-         data: ''
-      }
-
-      this.updateState = this.updateState.bind(this);
-      this.clearInput = this.clearInput.bind(this);
-   };
-
-   updateState(e) {
-      this.setState({data: e.target.value});
-   }
-
-   clearInput() {
-      this.setState({data: ''});
-      ReactDOM.findDOMNode(this.refs.myInput).focus();
-   }
 
    render() {
       return (
          <div>
-            <input value = {this.state.data} onChange = {this.updateState} 
-               ref = "myInput"></input>
-            <button onClick = {this.clearInput}>CLEAR</button>
-            <h4>{this.state.data}</h4>
-         </div>
+            <ReactCSSTransitionGroup 
+                transitionName = "example"
+                transitionAppear = {true} 
+                transitionAppearTimeout = {1000}
+                transitionEnter = {false} 
+                transitionLeave = {false}
+                >
+					
+               <h1>My Element...</h1>
+            </ReactCSSTransitionGroup>
+         </div>      
       );
    }
 }
